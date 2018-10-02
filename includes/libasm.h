@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 14:14:30 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/01 13:32:26 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/02 17:51:44 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct	s_header
 	char			*prog_name;
 	char			*comment;
 	int				name_size;
+	char			flag_n;
+	char			flag_c;
 	int				comment_size;
 	char			*name_line;
 	char			*comment_line;
