@@ -1,4 +1,4 @@
-.name ""#hola primoh
+.name "zork"#hola primoh
 .comment "just a basic living prog"
 
 l2:	sti	r99, r12,%0

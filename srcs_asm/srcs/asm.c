@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:41:06 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/03 15:20:12 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/03 16:11:31 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_header	name_and_comment(int fd)
 	char		*line;
 	t_header	h;
 
-	j = 1;
+	j = 0;
 	i = 0;
 	h.prog_name = NULL;
 	h.comment = NULL;
@@ -29,13 +29,17 @@ static t_header	name_and_comment(int fd)
 	h.comment_size = 0;
 	while ((i = get_next_line(fd, &line) > 0) > 0)
 	{
+		j++;
 		h = ft_getname(line, j, h);
 		if (h.flag_n == 2 && h.flag_c == 2)
 			break ;
-		j++;
 	}
 	if (i < 1)
 		ft_error_getname(j, 0);
+	if (h.name_size > PROG_NAME_LENGTH)
+		ft_error_getname(j, 2);
+	if (h.comment_size > COMMENT_LENGTH)
+		ft_error_getname(j, -2);
 	h.line_n = j;
 	return (h);
 }

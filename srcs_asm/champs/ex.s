@@ -1,18 +1,6 @@
-.name "z
-o
-r
-
-k"
-
-
-
-.comment "just a 
-basic 
-
-living
-prog"
-
-l2: sti r99,r12,%0
-	and r1,%0,r1
-live:	live	%1
-	zjmp	%:live
+.name "zork"
+.comment "just a basic living prog"  #hola
+l2: sti r9,r12,%0#asdf
+	and r1,%0,r10#asdf
+live:	live	%1#asdf
+	zjmp	%:live#asdf
