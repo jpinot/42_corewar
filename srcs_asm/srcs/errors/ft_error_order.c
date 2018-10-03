@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:37:37 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/01 13:54:12 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/03 15:09:03 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	invalid_comm(int l)
 	ft_putstr("I'm a comment");
 }
 
-static void no_parameter(int l)
+static void	no_parameter(int l)
 {
 	ft_putstr("\x1B[91mSyntax error at line ");
 	ft_putnbr(l);

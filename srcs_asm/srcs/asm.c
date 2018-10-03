@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:41:06 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/02 18:51:42 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/03 15:20:12 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ static t_header	name_and_comment(int fd)
 	h.comment_size = 0;
 	while ((i = get_next_line(fd, &line) > 0) > 0)
 	{
-		if (line[0] != 0)
-			h = ft_getname(line, j, h);
-		else
-			ft_strdel(&line);
+		h = ft_getname(line, j, h);
 		if (h.flag_n == 2 && h.flag_c == 2)
 			break ;
 		j++;
@@ -101,9 +98,7 @@ int				assembler(int fd, char *filename, int sel)
 		ft_header_to_file(header, fd2, line->w);
 		ft_line_to_file(line, label, fd2);
 		close(fd2);
-		ft_putstr("Writing output program to ");
-		ft_putstr(filename);
-		write(1, "\n", 1);
+		ft_printf("Writing output program to %s\n", filename);
 	}
 	else
 		ft_print_asm(header, line, label, line->w);

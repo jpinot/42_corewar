@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 18:08:37 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/25 17:38:53 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/03 15:20:10 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void		ft_print_asm(t_header header,
 		tmp = tmp->next;
 	}
 	ft_delstruct(label, line);
-	ft_strdel(&header.name_line);
-	ft_strdel(&header.comment_line);
+	ft_strdel(&header.prog_name);
+	ft_strdel(&header.comment);
 }
