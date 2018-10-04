@@ -6,7 +6,7 @@
 #    By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/14 22:43:59 by jpinyot           #+#    #+#              #
-#    Updated: 2018/09/18 16:06:28 by jpinyot          ###   ########.fr        #
+#    Updated: 2018/10/04 15:33:06 by jpinyot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ FUNC = ft_getname.c\
 	   ft_header_to_file.c\
 	   ft_invert_bytes.c\
 	   ft_delstruct.c\
+	   ft_label_to_num.c\
 
 OBJ_SRC = $(patsubst %.c, $(SRC_DIR)%.o, $(SRC))
 OBJ_VIS = $(patsubst %.c, $(VIS_DIR)%.o, $(VIS))

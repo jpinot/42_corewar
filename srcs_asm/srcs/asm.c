@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:41:06 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/03 16:11:31 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/04 15:25:27 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int				assembler(int fd, char *filename, int sel)
 	line = orders(fd, header.line_n, label);
 	if (sel == 1)
 	{
+		line = ft_label_to_num(line, label);
 		if ((fd2 = open(filename, O_WRONLY | O_CREAT | O_TRUNC,
 						S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) == -1)
 			exit(-1);
