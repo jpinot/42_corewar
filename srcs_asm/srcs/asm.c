@@ -6,11 +6,22 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:41:06 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/04 15:25:27 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/04 20:14:59 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
+
+static t_header	initial_header(t_header h)
+{
+	h.prog_name = NULL;
+	h.comment = NULL;
+	h.flag_n = 0;
+	h.flag_c = 0;
+	h.name_size = 0;
+	h.comment_size = 0;
+	return (h);
+}
 
 static t_header	name_and_comment(int fd)
 {
@@ -21,12 +32,7 @@ static t_header	name_and_comment(int fd)
 
 	j = 0;
 	i = 0;
-	h.prog_name = NULL;
-	h.comment = NULL;
-	h.flag_n = 0;
-	h.flag_c = 0;
-	h.name_size = 0;
-	h.comment_size = 0;
+	h = initial_header(h);
 	while ((i = get_next_line(fd, &line) > 0) > 0)
 	{
 		j++;

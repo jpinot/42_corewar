@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 18:08:37 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/03 15:20:10 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/04 21:36:06 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_print_header(t_header h, int size)
 	int i;
 
 	i = -1;
-	ft_putstr("ANOTED VERSION\nProgram size: ");
+	ft_putstr("ANNOTAED VERSION\nProgram size: ");
 	ft_putnbr(size);
 	ft_putstr(" bytes\nName:         \"");
 	while (++i <= h.name_size)
@@ -45,8 +45,8 @@ void		ft_print_asm(t_header header,
 		{
 			ft_print_order(tmp);
 			ft_print_info(tmp);
+			write(1, "\n", 1);
 		}
-		write(1, "\n", 1);
 		tmp = tmp->next;
 	}
 	ft_delstruct(label, line);

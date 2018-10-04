@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 13:38:10 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/04 15:30:57 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/04 20:12:36 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	label_to_line(t_line *line, t_label **label, int fd)
 	i = -1;
 	while (++i < 3)
 	{
-//		if (line->arg_lab[i])
-//			line->arg[i] = ft_extract_label_line(line, label[line->arg[i]], i);
 		if (line->arg_size[i])
 		{
 			ft_invert_bytes(&line->arg[i], line->arg_size[i]);

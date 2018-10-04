@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 13:08:24 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/03 19:48:10 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/04 19:08:31 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			ft_extract_reg(t_line **line, int i, int n_line, int pos)
 	line[0]->ocp = ft_set_ocp(pos, line[0]->ocp);
 	i = ft_atoi_asm(line[0]->line, i, &line[0]->arg[pos]);
 	if (line[0]->arg[pos] < 0)
-				ft_error_par(n_line, 0, "register", "r22,");
+		ft_error_par(n_line, 0, "register", "r22,");
 	if ((i = ft_jmp_to_next(line[0]->line, i)) == -1)
 		ft_error_par(n_line, 0, "register", "r22,");
 	line[0]->w += REG_ASM_SIZE;

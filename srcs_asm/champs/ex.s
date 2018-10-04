@@ -1,10 +1,7 @@
-.name "zork"
-.comment "just a basic living prog"  #hola
+.name "zork";asdgf
+.comment "just a basic living prog";asdf
 
-;hola
-#mielda
-
-l2: sti r9,r12,%0#asdf
-	and r1,%0,r10#asdf
-	live	%1#asdf
-	zjmp	%:live#asdf
+l2: 	sti		r99,r12,%123456789000;asdf
+		and		r1,%2147483647,r1;asdf
+live:	live	%1;adf
+		zjmp	%:live;asdg
