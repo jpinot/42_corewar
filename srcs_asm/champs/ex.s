@@ -19,7 +19,15 @@
     :::::::  '''''''''''   ''''''''''''':::. -'\  \     EL KE TE FAKA
 _____':::::_____________________________________\__\______________________"
 
-l2: 	sti		r99,r12,%123456789000;asdf
-		and		r1,%2147483647,r1;asdf
-live:	live	%1;adf
-		zjmp	%:live;asdg
+
+live:	live	%1
+unicorn:ld		%92,r10
+		aff		r10
+		ld		%32,r11
+		aff		r11
+		aff		r10
+		aff		r10
+		aff		r10
+		aff		r10
+
+

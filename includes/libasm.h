@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 14:14:30 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/04 15:36:03 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 17:40:43 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_line			*ft_newline(t_label *l, int ord_n, char *line, int w);
 t_line			*ft_getorders(char *l, t_label **label, int j, int n_line);
 t_label			**ft_add_new_label(t_label **label, int id, char *l, int i);
 t_line			*ft_add_new_line(char *l, int cnt, int i, int n_line);
-MAX_CAST		ft_atoi_asm(const char *str, int pos, int *val);
+MAX_CAST		ft_atoi_asm(const char *str, int pos, MAX_CAST *val);
 int				ft_jmp_s_t(char *s, int i);
 int				ft_hash_it(int id, int max);
 MAX_CAST		ft_extract_label_line(t_line *line, t_label *label, int pos);
@@ -128,5 +128,6 @@ void			ft_error_par(int l, int sel, char *s, char *ex);
 void			ft_error_label(int l, int sel, char *s);
 void			ft_check_for_coments(char *l, int i, int n_line);
 void			ft_error_getorders(int l, int sel);
-
+void			ft_puterr(char *s);
+void			ft_putnerr(int n);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 19:28:53 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/30 21:53:58 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 17:24:36 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_print_color(t_label *label)
 	i = -1;
 	if (label->color)
 		ft_printf("\e[38;5;%im", label->color);
-	while (label->name[++i] != ':')
+	while (label->name[++i] != LABEL_CHAR)
 		write(1, &label->name[i], 1);
 	write(1, "\e[37m", 5);
 	if (label->color == 0)

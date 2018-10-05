@@ -6,7 +6,7 @@
 #    By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/14 22:43:59 by jpinyot           #+#    #+#              #
-#    Updated: 2018/10/04 15:33:06 by jpinyot          ###   ########.fr        #
+#    Updated: 2018/10/05 15:13:54 by jpinyot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ ERROR = ft_invalidargv.c\
 	ft_error_order.c\
 	ft_error_par.c\
 	ft_error_label.c\
+	ft_puterr.c\
 
 VIS = ft_print_asm.c\
 	  ft_label_to_pos.c\

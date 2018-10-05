@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:47:39 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/30 21:37:49 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 15:40:01 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static void	intern_error(int l, int sel)
 {
-	ft_putstr("\x1B[91mInvalid ld parameters at line ");
-	ft_putnbr(l);
+	ft_puterr("\x1B[91mInvalid ld parameters at line ");
+	ft_putnerr(l);
 	if (sel == 0)
-		ft_putstr(":\n\t\x1B[97m-At first parameter.");
+		ft_puterr(":\n\t\x1B[97m-At first parameter.");
 	else
-		ft_putstr(":\n\t\x1B[97m-At second parameter.");
-	ft_putstr("\n\t\x1B[92mUsage:\x1B[97m");
-	ft_putstr("\n\t-The first parameter must be direct or indirect.");
-	ft_putstr("\n\t-The second parameter must be a register.");
-	ft_putstr("\n\t\x1B[92mExample:\x1B[97m\n\t");
-	ft_putstr("ld\t%12, r11");
+		ft_puterr(":\n\t\x1B[97m-At second parameter.");
+	ft_puterr("\n\t\x1B[92mUsage:\x1B[97m");
+	ft_puterr("\n\t-The first parameter must be direct or indirect.");
+	ft_puterr("\n\t-The second parameter must be a register.");
+	ft_puterr("\n\t\x1B[92mExample:\x1B[97m\n\t");
+	ft_puterr("ld\t%12, r11");
 	exit(-1);
 }
 

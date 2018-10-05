@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:43:58 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/17 15:03:25 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 15:40:01 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static void	intern_error(int l, int sel)
 {
-	ft_putstr("\x1B[91mInvalid add parameters at line ");
-	ft_putnbr(l);
+	ft_puterr("\x1B[91mInvalid add parameters at line ");
+	ft_putnerr(l);
 	if (sel == 0)
-		ft_putstr(":\n\t\x1B[97m-At first parameter.");
+		ft_puterr(":\n\t\x1B[97m-At first parameter.");
 	else if (sel == 1)
-		ft_putstr(":\n\t\x1B[97m-At second parameter.");
+		ft_puterr(":\n\t\x1B[97m-At second parameter.");
 	else if (sel == 2)
-		ft_putstr(":\n\t\x1B[97m-At third parameter.");
-	ft_putstr("\n\t\x1B[92mUsage:\x1B[97m");
-	ft_putstr("\n\t-The first parameter must be register.");
-	ft_putstr("\n\t-The second parameter must be register.");
-	ft_putstr("\n\t-The third parameter must be register.");
-	ft_putstr("\n\t\x1B[92mExample:\x1B[97m\n\t");
-	ft_putstr("add\tr12, r11, r3");
+		ft_puterr(":\n\t\x1B[97m-At third parameter.");
+	ft_puterr("\n\t\x1B[92mUsage:\x1B[97m");
+	ft_puterr("\n\t-The first parameter must be register.");
+	ft_puterr("\n\t-The second parameter must be register.");
+	ft_puterr("\n\t-The third parameter must be register.");
+	ft_puterr("\n\t\x1B[92mExample:\x1B[97m\n\t");
+	ft_puterr("add\tr12, r11, r3");
 	exit(-1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/18 16:04:35 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/18 18:58:15 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 17:45:28 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static void	ft_print_inv(t_line *l)
 		write(1, "    ", 4);
 	while (++i < 3)
 	{
-		if (l->arg_size[i])
+		if (l->arg_size[i] && IND_SIZE == 2 &&
+				DIR_SIZE == 4 && REG_ASM_SIZE == 1)
 			write_good(l->arg[i], l->arg_size[i]);
 	}
 	write(1, "\n", 1);

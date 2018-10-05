@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:45:53 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/01 15:32:46 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 15:40:01 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static void	intern_error(int l, int sel)
 {
-	ft_putstr("\x1B[91mInvalid and parameters at line ");
-	ft_putnbr(l);
+	ft_puterr("\x1B[91mInvalid and parameters at line ");
+	ft_putnerr(l);
 	if (sel == 0)
-		ft_putstr(":\n\t\x1B[97m-At first parameter.");
+		ft_puterr(":\n\t\x1B[97m-At first parameter.");
 	else if (sel == 1)
-		ft_putstr(":\n\t\x1B[97m-At second parameter.");
+		ft_puterr(":\n\t\x1B[97m-At second parameter.");
 	else
-		ft_putstr(":\n\t\x1B[97m-At third parameter.");
-	ft_putstr("\n\t\x1B[92mUsage:\x1B[97m");
-	ft_putstr("\n\t-The first parameter must be direct, ");
-	ft_putstr("indirect or reguister.");
-	ft_putstr("\n\t-The second parameter must be direct, ");
-	ft_putstr("\n\tindirect or reguister.");
-	ft_putstr("\n\t-The third parameter must be a register.");
-	ft_putstr("\n\t\x1B[92mExample:\x1B[97m\n\t");
-	ft_putstr("and\t2,4,r2");
+		ft_puterr(":\n\t\x1B[97m-At third parameter.");
+	ft_puterr("\n\t\x1B[92mUsage:\x1B[97m");
+	ft_puterr("\n\t-The first parameter must be direct, ");
+	ft_puterr("indirect or reguister.");
+	ft_puterr("\n\t-The second parameter must be direct, ");
+	ft_puterr("\n\tindirect or reguister.");
+	ft_puterr("\n\t-The third parameter must be a register.");
+	ft_puterr("\n\t\x1B[92mExample:\x1B[97m\n\t");
+	ft_puterr("and\t2,4,r2");
 	exit(-1);
 }
 

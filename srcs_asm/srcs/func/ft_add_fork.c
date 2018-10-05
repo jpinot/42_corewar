@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:47:32 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/17 15:04:00 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 15:40:01 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	intern_error(int l, int sel)
 {
-	ft_putstr("\x1B[91mInvalid fork parameters at line ");
-	ft_putnbr(l);
+	ft_puterr("\x1B[91mInvalid fork parameters at line ");
+	ft_putnerr(l);
 	if (sel == 0)
-		ft_putstr(":\n\t\x1B[97m-At first parameter.");
-	ft_putstr("\n\t\x1B[92mUsage:\x1B[97m");
-	ft_putstr("\n\t-The first parameter must be direct.");
-	ft_putstr("\n\t\x1B[92mExample:\x1B[97m\n\t");
-	ft_putstr("fork\t%12");
+		ft_puterr(":\n\t\x1B[97m-At first parameter.");
+	ft_puterr("\n\t\x1B[92mUsage:\x1B[97m");
+	ft_puterr("\n\t-The first parameter must be direct.");
+	ft_puterr("\n\t\x1B[92mExample:\x1B[97m\n\t");
+	ft_puterr("fork\t%12");
 	exit(-1);
 }
 

@@ -6,13 +6,13 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 13:02:01 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/03 19:48:12 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 17:21:23 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
 
-MAX_CAST		ft_atoi_asm(const char *str, int pos, int *val)
+MAX_CAST		ft_atoi_asm(const char *str, int pos, MAX_CAST *val)
 {
 	MAX_CAST	n;
 	size_t		i;

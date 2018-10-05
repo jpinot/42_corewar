@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 13:40:35 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/25 18:35:14 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 17:00:19 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_strcmp_to(char *s1, char *line)
 	char	*s2;
 
 	i = -1;
-	if (line[0] == ':')
+	if (line[0] == LABEL_CHAR)
 		s2 = &line[1];
 	else
 		s2 = line;

@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:52:22 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/01 16:02:03 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 16:52:57 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static int		ft_cmpr_str(char *s1, char *s2)
 	int i;
 
 	i = -1;
-	while (s1[++i] && s2[i] && s1[i] != ':' && s2[i] != ':')
+	while (s1[++i] && s2[i] && s1[i] != LABEL_CHAR && s2[i] != LABEL_CHAR)
 	{
 		if (s1[i] != s2[i])
 			return (0);
 	}
-	if (s1[i] == ':' && s2[i] == ':')
+	if (s1[i] == LABEL_CHAR && s2[i] == LABEL_CHAR)
 		return (1);
 	return (0);
 }

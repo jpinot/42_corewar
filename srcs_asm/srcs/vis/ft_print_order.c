@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/18 13:35:56 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/30 21:57:07 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 17:46:05 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static void	ft_put_col(int sel, int pos, t_line *l)
 	}
 	while (l->arg_lab[pos][++i] && l->arg_lab[pos][i] != SEPARATOR_CHAR
 			&& l->arg_lab[pos][i] != ' ' && l->arg_lab[pos][i] != '\t'
-			&& l->arg_lab[pos][i] != ';' && l->arg_lab[pos][i] != '#')
+			&& l->arg_lab[pos][i] != END_LINE_CHAR &&
+			l->arg_lab[pos][i] != COMMENT_CHAR)
 		write(1, &l->arg_lab[pos][i], 1);
 	while (++i <= max)
 		write(1, " ", 1);

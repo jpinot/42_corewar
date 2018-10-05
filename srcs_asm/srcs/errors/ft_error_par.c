@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:37:49 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/09/18 18:51:21 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/05 15:24:17 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static void	invalid_par(int l, char *s, char *ex)
 {
-	ft_putstr("\x1B[91mInvalid parameter at line ");
-	ft_putnbr(l);
-	ft_putstr(":\n\t\x1B[92mUsage:\x1B[97m");
-	ft_putstr("\n\t-Invalid format of parameter type ");
-	ft_putstr(s);
-	ft_putstr(".");
-	ft_putstr("\n\t-Each parameter must be followed by a \"");
+	ft_puterr("\x1B[91mInvalid parameter at line ");
+	ft_putnerr(l);
+	ft_puterr(":\n\t\x1B[92mUsage:\x1B[97m");
+	ft_puterr("\n\t-Invalid format of parameter type ");
+	ft_puterr(s);
+	ft_puterr(".");
+	ft_puterr("\n\t-Each parameter must be followed by a \"");
 	ft_putchar(SEPARATOR_CHAR);
-	ft_putstr("\".");
-	ft_putstr("\n\t\x1B[92mExample:\x1B[97m\n\t");
-	ft_putstr(ex);
+	ft_puterr("\".");
+	ft_puterr("\n\t\x1B[92mExample:\x1B[97m\n\t");
+	ft_puterr(ex);
 }
 
 void		ft_error_par(int l, int sel, char *s, char *ex)
