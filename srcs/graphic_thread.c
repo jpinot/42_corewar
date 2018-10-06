@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 17:47:26 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/09/28 21:41:14 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/10/04 15:46:28 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void	init_graph(void)
 	t_pc			*aux_pc;
 
 	if (!(g_aux = (t_graphics *)malloc(sizeof(t_graphics))))
-		ft_error("malloc failed in init_graph");
+		ft_error("Error: malloc failed in init_graph\n");
 	init_board();
 	ft_memcpy(g_aux->board, g_board, sizeof(t_board) * MEM_SIZE);
 	ft_memcpy(g_aux->players, g_players, sizeof(t_player) * g_n_players);
@@ -102,7 +102,7 @@ static void	init_graph(void)
 	g_aux->cycle = g_nb_cycles;
 	g_aux->nb_pc = g_nb_pc;
 	if (!(g_aux->pcs = (unsigned int *)malloc(sizeof(unsigned int) * g_nb_pc)))
-		ft_error("malloc failed in unit_graph");
+		ft_error("Error: malloc failed in unit_graph\n");
 	i = 0;
 	aux_pc = g_pc;
 	while (i < g_nb_pc && aux_pc)
@@ -138,7 +138,7 @@ static void	add_frame(void)
 static void	end_frame(void)
 {
 	if (!(g_aux = (t_graphics *)malloc(sizeof(t_graphics))))
-		ft_error("malloc failed in end_frame");
+		ft_error("Error: malloc failed in end_frame\n");
 	g_aux->prog_end = 0x1;
 	add_frame();
 }

@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/22 17:14:43 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/09/29 20:33:43 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/10/04 01:05:13 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		core_lldi(t_pc *pc)
 		get_arg(ocp, pos, 0, &arg1);
 		get_arg(ocp, pos, arg1.len, &arg2);
 		reg_pos = g_mem[(pos + 1 + 1 + arg1.len + arg2.len) % MEM_SIZE] - 1;
-		if (get_arg_value(&arg1, pc, 0) && get_arg_value(&arg2, pc, 0) && reg_pos < REG_NUMBER)
+		if (get_arg_value(&arg1, pc, 1) && get_arg_value(&arg2, pc, 1) && reg_pos < REG_NUMBER)
 		{
 			invert_bytes(arg1.arg, arg1.type == DIR_CODE ? IND_SIZE : REG_SIZE);
 			invert_bytes(arg2.arg, arg2.type == DIR_CODE ? IND_SIZE : REG_SIZE);

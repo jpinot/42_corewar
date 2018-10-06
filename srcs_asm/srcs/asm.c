@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 12:41:06 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/04 20:14:59 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/06 14:50:59 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static t_line	*orders(int fd, int line_n, t_label **label)
 	bgn = line;
 	while (get_next_line(fd, &l) > 0)
 	{
+		line_n++;
 		j = 0;
 		while (l[j] && (l[j] == ' ' || l[j] == '\t'))
 			j++;
@@ -81,7 +82,6 @@ static t_line	*orders(int fd, int line_n, t_label **label)
 		}
 		else
 			ft_strdel(&l);
-		line_n++;
 	}
 	if (bgn->next == NULL)
 		ft_error_order(line_n, 3, NULL, NULL);

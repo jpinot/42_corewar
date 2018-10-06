@@ -6,7 +6,7 @@
 /*   By: jagarcia <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/15 04:10:37 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/09/30 21:53:40 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/10/06 04:05:20 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,52 +51,35 @@ static int			take_color_byte(t_board byte)
 	}
 }
 
-static void			write_byte(int pos, const t_board *board, const unsigned int flags)
+static void			write_byte(int pos, const t_board *board,
+		int cuant_squares[2])
 {
 	char		hexa_byte[3];
-	SDL_Surface *surf_byte;
-	SDL_Surface *tmp;
+	SDL_Texture *surf_byte;
 
-	g_Graph->square->x = (g_Graph->square->w - 1) * (pos % g_Graph->cuant_squares[0]);
-	g_Graph->square->y = (g_Graph->square->h - 1) * (pos / g_Graph->cuant_squares[1]);
+	g_graph->square->x = g_graph->big_square->x + (g_graph->square->w - 1)
+		* (pos % cuant_squares[0]);
+	g_graph->square->y = g_graph->big_square->y + (g_graph->square->h - 1)
+		* (pos / cuant_squares[1]);
 	surf_byte = NULL;
 	if (g_hexl)
-		surf_byte = g_Graph->hexa_bytes[take_color_byte(board[pos])]
+		surf_byte = g_graph->hexa_bytes[take_color_byte(board[pos])]
 			[take_hexa_byte(board[pos].mem, hexa_byte)];
 	else
 	{
 		if (board[pos].id - 1 >= 0)
-			surf_byte = g_Graph->hexa_bytes[9][take_color_byte(board[pos])];
+			surf_byte = g_graph->hexa_bytes[9][take_color_byte(board[pos])];
 		else
-			surf_byte = g_Graph->hexa_bytes[9][4];
+			surf_byte = g_graph->hexa_bytes[9][4];
 	}
-	if (!(tmp = SDL_ConvertSurfaceFormat(surf_byte, 372645892, 0)))
-		ft_sdl_error("SDL_ConvertSurfaceFormat", MODE_SDL);
-	SDL_BlitSurface(tmp, NULL, g_Graph->rack,
-		&(SDL_Rect){g_Graph->square->x + 1, g_Graph->square->y,
-		tmp->w, tmp->h});
-	SDL_FreeSurface(tmp);
+	SDL_RenderCopy(g_graph->screen.renderer, surf_byte, NULL, g_graph->square);
 }
 
-void	ft_board_to_screen(const t_board *board, const unsigned int flags)
+void				ft_board_to_screen(const t_board *board)
 {
 	int			i;
-	char		*pixel;
-	int			pitch;
-	SDL_Surface	*rack;
-	SDL_Texture	*texture;
 
 	i = 0;
 	while (i < MEM_SIZE)
-		write_byte(i++, board, flags);
-	rack = g_Graph->rack;
-	texture = g_Graph->screen.texture;
-	SDL_LockTexture(g_Graph->screen.texture, NULL, (void **)&pixel, &pitch);
-	SDL_LockSurface(rack);
-	i = -1;
-	while (++i < rack->h)
-		memcpy(pixel + i * pitch, rack->pixels + i * rack->pitch,
-			rack->pitch);
-	SDL_UnlockSurface(rack);
-	SDL_UnlockTexture(g_Graph->screen.texture);
+		write_byte(i++, board, g_graph->cuant_squares);
 }

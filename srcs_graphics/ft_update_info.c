@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 16:39:44 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/09/30 22:10:10 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/10/05 23:58:44 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,19 @@ static void		update_digit(SDL_Rect pos, char digit[2],
 	SDL_Surface *num_surf;
 
 	if (mode == GENERAL_NBR_FONT)
-		num_surf = g_Graph->general_nbr;
+		num_surf = g_graph->general_nbr;
 	else
-		num_surf = g_Graph->player_nbr;
-	font = g_Graph->font[mode];
-	tmp = TTF_RenderUTF8_Blended(font.font, digit, font.color);
-	SDL_FillRect(num_surf, &(SDL_Rect){1, 1, num_surf->w - 2, num_surf->h - 2},
-		SDL_MapRGBA(num_surf->format, 0, 0, 0, 255));
-	SDL_BlitSurface(tmp, NULL, num_surf, &(SDL_Rect){(num_surf->w - tmp->w) / 2,
-		(num_surf->h - tmp->h) / 2 + 2, tmp->w, tmp->h});
-	ft_surf_to_text(g_Graph->info_text, num_surf, &pos);
+		num_surf = g_graph->player_nbr;
+	font = g_graph->font[mode];
+	if (!(tmp = TTF_RenderUTF8_Blended(font.font, digit, font.color)))
+		ft_sdl_error("TTF_RenderUTF8_Blended", MODE_TTF);
+	if (SDL_FillRect(num_surf, &(SDL_Rect){1, 1, num_surf->w - 2,
+		num_surf->h - 2}, SDL_MapRGBA(num_surf->format, 0, 0, 0, 255)))
+		ft_sdl_error("SDL_FillRect", MODE_SDL);
+	if (SDL_BlitSurface(tmp, NULL, num_surf, &(SDL_Rect){(num_surf->w - tmp->w)
+		/ 2, (num_surf->h - tmp->h) / 2 + 2, tmp->w, tmp->h}))
+		ft_sdl_error("SDL_BlitSurface", MODE_SDL);
+	ft_surf_to_text(g_graph->info_text, num_surf, &pos);
 	SDL_FreeSurface(tmp);
 }
 
@@ -66,16 +69,13 @@ static void		update_players(const int cicle_pre_die, const t_player *players,
 	while (i < g_n_players)
 	{
 		ft_check_health(g_frame->cycle_to_die, i, cicle_pre_die, players);
-		g_Graph->font[PLAYER_NBR_FONT].color = ft_sdl_color(i);
-		if (!cicle_pre_die)
-			update_number(0, g_Graph->info.cicles_play[i],
-					PLAYER_NBR_FONT);
+		g_graph->font[PLAYER_NBR_FONT].color = ft_sdl_color(i);
 		if (players[i].live_counter != lives[i])
 		{
 			update_number(players[i].live_counter,
-					g_Graph->info.cicles_play[i], PLAYER_NBR_FONT);
+					g_graph->info.cicles_play[i], PLAYER_NBR_FONT);
 			update_number(players[i].last_live,
-				g_Graph->info.lst_life[i], PLAYER_NBR_FONT);
+				g_graph->info.lst_life[i], PLAYER_NBR_FONT);
 			lives[i] = players[i].live_counter;
 		}
 		i++;
@@ -85,22 +85,19 @@ static void		update_players(const int cicle_pre_die, const t_player *players,
 void			ft_update_info(const t_player *players, const int cicle_pre_die)
 {
 	static unsigned int	nbr_pcs = 0;
-	static unsigned int lives[MAX_PLAYERS] = {0};
+	static unsigned int	lives[MAX_PLAYERS] = {0};
 
-	update_number(g_frame->cycle, *g_Graph->info.cicles_gen, GENERAL_NBR_FONT);
-	if (!cicle_pre_die)
-	{
-		update_number(0,
-			*g_Graph->info.cicle_to_die, GENERAL_NBR_FONT);
-		update_number(g_frame->cycle_to_die,
-			*g_Graph->info.cicle_to_die, GENERAL_NBR_FONT);
-	}
+	update_number(g_frame->cycle, *g_graph->info.cicles_gen, GENERAL_NBR_FONT);
+	update_number(0,
+		*g_graph->info.cicle_to_die, GENERAL_NBR_FONT);
+	update_number(g_frame->cycle_to_die,
+		*g_graph->info.cicle_to_die, GENERAL_NBR_FONT);
 	if (nbr_pcs != g_frame->nb_pc)
 	{
 		if (nbr_pcs > g_frame->nb_pc)
 			update_number(0,
-				*g_Graph->info.processos, GENERAL_NBR_FONT);
-		update_number(g_frame->nb_pc, *g_Graph->info.processos,
+				*g_graph->info.processos, GENERAL_NBR_FONT);
+		update_number(g_frame->nb_pc, *g_graph->info.processos,
 			GENERAL_NBR_FONT);
 		nbr_pcs = g_frame->nb_pc;
 	}

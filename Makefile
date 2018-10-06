@@ -6,21 +6,24 @@
 #    By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/04 20:25:41 by mrodrigu          #+#    #+#              #
-#    Updated: 2018/10/01 00:22:36 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/10/06 03:50:51 by jagarcia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 .PHONY: all clean fclean re check_lib
 
-NAME = prueba
+NAME = corewar
 
-CFLAGS = -pthread  #-g3 #-fsanitize=address #-Wall -Wextra -Werror -g3
+ASM_NAME = asm
+
+CFLAGS = -pthread #-Wall -Wextra -Werror
 
 SDLFLAGS = `sdl2-config --cflags` `sdl2-config --libs` -lSDL2_ttf -lSDL2_image
 
 CC = gcc
 
 FUNCS =	main.c \
+		print_usage.c \
 		init_player.c \
 		invert_bytes.c \
 		read_alloc.c \
@@ -69,6 +72,7 @@ FUNCS =	main.c \
 		instruc_core_sti.c \
 		instruc_core_fork.c \
 		instruc_core_lldi.c \
+		instruc_core_lld.c \
 		instruc_core_lfork.c
 
 GRAPH = ft_ini_graphics.c \
@@ -92,11 +96,16 @@ GRAPH = ft_ini_graphics.c \
 		new_frame.c \
 		ft_surf_to_text.c \
 		ft_reset_health.c \
-		ft_check_health.c
+		ft_check_health.c \
+		buttons.c \
+		ft_events.c \
+		ft_blit_and_draw.c
 
 SRCS_DIR = srcs/
 
 GRAPH_DIR = srcs_graphics/
+
+ASM_DIR = srcs_asm/
 
 INC_DIR = includes/
 
@@ -134,7 +143,7 @@ $(OBJ_DIR)%.o: $(GRAPH_DIR)%.c $(INC) $(LIBFT_DIR)$(LIBFT_NAME)
 	@$(CC) $(CFLAGS) -c $< -I $(INC_DIR) -I$(LIBFT_DIR)includes/ -o $@
 	@printf "\033[92m   [OK]\n\033[0m"
 else
-$(NAME) : |check_lib $(OBJ)
+$(NAME) : |check_lib $(ASM_NAME) $(OBJ)
 
 $(OBJ_DIR)%.o : $(SRCS_DIR)%.c $(INC) $(LIBFT_DIR)$(LIBFT_NAME)
 	@printf "\033[92mCreating $(NAME)\033[0m\n"
@@ -148,15 +157,20 @@ endif
 check_lib:
 	@$(MAKE) -sC $(LIBFT_DIR)
 
+$(ASM_NAME):
+	@$(MAKE) -sC $(ASM_DIR)
+
 clean:
 	@printf "\033[92m***Cleaning Objects***\033[0m\n"
 	@rm -rf $(OBJ_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(ASM_DIR) clean
 
 fclean: clean
 	@printf "\033[92m***Cleaning Executables & Libraries***\033[0m\n"
 	@rm -f $(NAME)
+	@rm -f $(ASM_NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-
+	@$(MAKE) -C $(ASM_DIR) fclean
 re: fclean
 	@make

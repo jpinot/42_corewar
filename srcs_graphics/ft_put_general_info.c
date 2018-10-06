@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/01 10:20:06 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/09/28 18:10:43 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/10/06 00:28:51 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ static void		prepare_font(int nbr_font, SDL_Color color)
 	t_font	*font;
 	t_font	*ref_font;
 
-	font = &(g_Graph->font[nbr_font]);
-	ref_font = &(g_Graph->font[FIELD_FONT]);
+	font = &(g_graph->font[nbr_font]);
+	ref_font = &(g_graph->font[FIELD_FONT]);
 	font->font_size = ref_font->font_size * 2;
-	font->font = TTF_OpenFont("./whitrabt.ttf", font->font_size);
-	TTF_SizeUTF8(font->font, "A", &font->w, &font->h);
+	if (!(font->font = TTF_OpenFont("./whitrabt.ttf", font->font_size)))
+		ft_sdl_error("TTF_OpenFont", MODE_TTF);
+	if (TTF_SizeUTF8(font->font, "A", &font->w, &font->h))
+		ft_sdl_error("TTF_SizeUTF8", MODE_TTF);
 	font->color = color;
 }
 
@@ -43,24 +45,24 @@ void			ft_put_general_info(void)
 
 	prepare_font(TMP_FONT, (SDL_Color){255, 255, 255, 255});
 	x_pos = 50;
-	g_Graph->font[GENERAL_NBR_FONT].color = g_Graph->font[TMP_FONT].color;
+	g_graph->font[GENERAL_NBR_FONT].color = g_graph->font[TMP_FONT].color;
 	tmp = 15;
-	tmp += prepare_string((int[2]){x_pos + (g_Graph->general_nbr->w * 10 - 9)
+	tmp += prepare_string((int[2]){x_pos + (g_graph->general_nbr->w * 10 - 9)
 			/ 2, tmp}, "Number of Cycles", 1);
-	*g_Graph->info.cicles_gen = (SDL_Rect){x_pos, tmp,
-			g_Graph->info.cicles_gen->w, g_Graph->info.cicles_gen->h};
-	tmp += ft_write_number_fields(&g_Graph->font[GENERAL_NBR_FONT],
-			(int[2]){x_pos, tmp}, g_Graph->general_nbr) + 10;
-	tmp += prepare_string((int[2]){x_pos + (g_Graph->general_nbr->w * 10 - 9)
+	*g_graph->info.cicles_gen = (SDL_Rect){x_pos, tmp,
+			g_graph->info.cicles_gen->w, g_graph->info.cicles_gen->h};
+	tmp += ft_write_number_fields(&g_graph->font[GENERAL_NBR_FONT],
+			(int[2]){x_pos, tmp}, g_graph->general_nbr) + 10;
+	tmp += prepare_string((int[2]){x_pos + (g_graph->general_nbr->w * 10 - 9)
 			/ 2, tmp}, "Cycles to Die", 1);
-	*g_Graph->info.cicle_to_die = (SDL_Rect){x_pos, tmp,
-			g_Graph->info.cicles_gen->w, g_Graph->info.cicles_gen->h};
-	tmp += ft_write_number_fields(&g_Graph->font[GENERAL_NBR_FONT],
-			(int[2]){x_pos, tmp}, g_Graph->general_nbr) + 10;
-	tmp += prepare_string((int[2]){x_pos + (g_Graph->general_nbr->w * 10 - 9)
-			/ 2, tmp}, "Number of Processos", 1);
-	*g_Graph->info.processos = (SDL_Rect){x_pos, tmp,
-			g_Graph->info.cicles_gen->w, g_Graph->info.cicles_gen->h};
-	tmp += ft_write_number_fields(&g_Graph->font[GENERAL_NBR_FONT],
-			(int[2]){x_pos, tmp}, g_Graph->general_nbr);
+	*g_graph->info.cicle_to_die = (SDL_Rect){x_pos, tmp,
+			g_graph->info.cicles_gen->w, g_graph->info.cicles_gen->h};
+	tmp += ft_write_number_fields(&g_graph->font[GENERAL_NBR_FONT],
+			(int[2]){x_pos, tmp}, g_graph->general_nbr) + 10;
+	tmp += prepare_string((int[2]){x_pos + (g_graph->general_nbr->w * 10 - 9)
+			/ 2, tmp}, "Number of Processes", 1);
+	*g_graph->info.processos = (SDL_Rect){x_pos, tmp,
+			g_graph->info.cicles_gen->w, g_graph->info.cicles_gen->h};
+	tmp += ft_write_number_fields(&g_graph->font[GENERAL_NBR_FONT],
+			(int[2]){x_pos, tmp}, g_graph->general_nbr);
 }

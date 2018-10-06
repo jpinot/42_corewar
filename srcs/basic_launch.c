@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/18 18:58:19 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/09/29 20:36:44 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/10/05 15:35:13 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	exe_pc(t_op *ops)
 void		basic_launch(void)
 {
 	int 	i;
-	t_op			ops[NB_INSTRUCTIONS];
+	t_op	ops[NB_INSTRUCTIONS];
 
 	init_func(ops);
 	while (g_pc)

@@ -6,40 +6,39 @@
 #    By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/14 22:43:59 by jpinyot           #+#    #+#              #
-#    Updated: 2018/10/05 15:13:54 by jpinyot          ###   ########.fr        #
+#    Updated: 2018/10/06 03:50:01 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = asm
+NAME = ../asm
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
+
+LIBFT_DIR = ../libft/
 
 SRC_DIR = srcs/
 
-ERROR_DIR = srcs/errors/
+INC_DIR = ../includes/
 
-FUNC_DIR = srcs/func/
+CC = gcc
 
-VIS_DIR = srcs/vis/
+INC = $(wildcard $(INC_DIR)*.h)
 
-SRC = main.c\
+SRC = asm_main.c\
       asm.c\
-
-ERROR = ft_invalidargv.c\
+    ft_invalidargv.c\
 	ft_error_getname.c\
 	ft_error_getorders.c\
 	ft_error_order.c\
 	ft_error_par.c\
 	ft_error_label.c\
 	ft_puterr.c\
-
-VIS = ft_print_asm.c\
+      ft_print_asm.c\
 	  ft_label_to_pos.c\
 	  ft_print_label.c\
 	  ft_print_order.c\
 	  ft_print_info.c\
-
-FUNC = ft_getname.c\
+       ft_getname.c\
        ft_getorders.c\
        ft_strcmp_index.c\
        ft_newline.c\
@@ -76,21 +75,34 @@ FUNC = ft_getname.c\
 	   ft_delstruct.c\
 	   ft_label_to_num.c\
 
-OBJ_SRC = $(patsubst %.c, $(SRC_DIR)%.o, $(SRC))
-OBJ_VIS = $(patsubst %.c, $(VIS_DIR)%.o, $(VIS))
-OBJ_ERROR = $(patsubst %.c, $(ERROR_DIR)%.o, $(ERROR))
-OBJ_FUNC = $(patsubst %.c, $(FUNC_DIR)%.o, $(FUNC))
+OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 
-OBJ = $(SRC:.c=.o) $(FUNC:.c=.o) $(ERROR:.c=.o) $(VIS:.c=.o)
+OBJ_DIR = ../objects/
 
+MODE = 0
+
+ifeq ($(MODE), 1)
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) -L$(LIBFT_DIR) -lft -I$(INC_DIR) $(OBJ) -o $(NAME)
 
-$(NAME): $(OBJ_SRC) $(OBJ_FUNC) $(OBJ_ERROR) $(OBJ_VIS)
-	@$(MAKE) -C ../libft
-	@gcc $(FLAGS) -L../libft/ -lft -I../includes $(OBJ) -o $(NAME)
-%.o : %.c
-	@gcc $(FLAGS) -I../includes -c $<
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC) $(LIBFT_DIR)libft.a
+	@mkdir -p $(OBJ_DIR)
+	@printf "\033[92m--->Compiling $(@F)\033[0m"
+	@$(CC) $(CFLAGS) -c $< -I$(INC_DIR) -I$(LIBFT_DIR)includes/ -o $@
+	@printf "\033[92m   [OK]\n\033[0m"
+else
+$(NAME): | check_lib $(OBJ)
+
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC) $(LIBFT_DIR)libft.a
+	@printf "\033[92mCreating asm\033[0m\n"
+	@$(MAKE) MODE=1
+	@printf "\033[92mDone asm [OK]\n\033[0m"
+endif
+
+check_lib:
+	@$(MAKE) -sC $(LIBFT_DIR)
 
 clean:
 	@$(MAKE) -C ../libft clean

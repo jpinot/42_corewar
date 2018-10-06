@@ -135,5 +135,17 @@ unicorn:ld		%92,r10;char
 		aff		r10
 		aff		r10
 		aff		r9					#8 line
+live2:	live	%1
+		ld		%80,r10;char
+		aff		r10
+		ld		%69,r10;char
+		aff		r10
+		ld		%65,r10;char
+		aff		r10
+		ld		%67,r10;char
+		aff		r10
+		ld		%69,r10;char
+		aff		r10
+		aff		r11
 		and		r2,r2,r2
-		zjmp	%:live
+		zjmp	%:live2

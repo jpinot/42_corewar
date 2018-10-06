@@ -1,3 +1,4 @@
+make;
 
 mkdir outputs
 while getopts "fdar" opt;

@@ -208,7 +208,7 @@ end:
 	add		r16, r16, r16
 	sti		r10, r8, r4
 	zjmp	%500
-	aff		r10
+	aff		r4
 	aff		r4
 	aff		r4
 	live	%0

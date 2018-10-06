@@ -1,4 +1,16 @@
-.name "ABOGADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";asdgf
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ex.s                                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/10/06 12:49:02 by jpinyot           #+#    #+#              #
+#    Updated: 2018/10/06 15:37:30 by jpinyot          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+.name "ABOGADAAAAAAAAAAAAAAAAAAAAAA";asdgf
 .comment " \/                    __/_ --''
                      _/:  .::::.-' .-'\/\_`*******          __ (_))
         \/           /:  .::::./  -._-.  d\|               (_))_(__))
@@ -17,7 +29,7 @@
 _____':::::_____________________________________\__\______________________"
 3:;asdf 
 l2: 	sti		r99,r12,%123456789000;asdf
- :		and		r1,%2147483647,r1;asdf
+ :		and		%2147483647,r1;asdf
 d:		and		r1,%2147483647,r1;asdf
 live:	live	%:;adf
 		zjmp	%:live;asdg

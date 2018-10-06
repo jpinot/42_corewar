@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/23 01:08:56 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/09/30 22:26:03 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static int		take_num(char *comm, int *len)
 {
-	while ((ft_isdigit(comm[*len])) && *len >= 0)
+	while (*len >= 0 && (ft_isdigit(comm[*len])))
 	{
 		(*len)--;
-		if (comm[*len] == '-' && comm[*len - 1] == '.')
+		if (*len > 0 && comm[*len] == '-' && comm[*len - 1] == '.')
 			(*len)--;
 	}
-	if ((comm[(*len)] != '.' && ft_atoi(comm + *len + 1) != 0) ||
-				comm[(*len)] == ',')
+	if (*len >= 0 && ((comm[(*len)] != '.' && ft_atoi(comm + *len + 1) != 0) ||
+				comm[(*len)] == ','))
 	{
 		(*len)++;
 		return (0);
@@ -36,7 +36,7 @@ static int		take_size(char *comm, int len)
 		if (comm[len] == '$')
 		{
 			len--;
-			while (ft_isdigit(comm[len]) && len >= 0)
+			while (len >= 0 && ft_isdigit(comm[len]))
 				len--;
 			if (len < 0)
 				return (0);
@@ -46,7 +46,7 @@ static int		take_size(char *comm, int len)
 			if (!take_num(comm, &len))
 				break ;
 		}
-		if (comm[len] != '$' && len >= 0)
+		if (len >= 0 && comm[len] != '$')
 			len--;
 	}
 	return (ft_atoi(comm + (len < 0 ? 0 : len)));
@@ -61,7 +61,7 @@ void			ft_field_format(int *size_cuant,
 		ft_asterisc_format(command, ap);
 	len = ft_strlen(*command) - 1;
 	size_cuant[0] = take_size(*command, len);
-	while ((*command)[len] != '.' && len >= 0)
+	while (len >= 0 && (*command)[len] != '.')
 		len--;
 	if (len >= 0)
 		size_cuant[1] = ft_atoi(*command + len + 1);

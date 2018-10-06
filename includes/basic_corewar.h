@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 21:48:04 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/09/30 21:49:32 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/10/05 23:56:16 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ extern size_t 			g_nb_cycles;
 extern unsigned int 	g_nb_pc;
 extern unsigned int 	g_nb_pc_total;
 extern t_pc 			*g_pc;
-extern unsigned char	g_winner;
 
 /*
 ******************************FUNCTIONS*****************************************
 */
 
-int				set_flags(const int ac, const char **av, unsigned int *flags, t_flag_value *f_value);
+void			print_usage(void);
+int				set_flags(const unsigned int n_player, const char **av, unsigned int *flags, t_flag_value *f_value);
 void			init_player(const char *str, const t_flag_value *f_value);
 char			*read_alloc(int fd, const size_t size);
 void			invert_bytes(void *arr, const size_t size);
@@ -138,6 +138,7 @@ void			instruc_core_ldi(t_pc *pc);
 void			instruc_core_sti(t_pc *pc);
 void			instruc_core_fork(t_pc *pc);
 void			instruc_core_lldi(t_pc *pc);
+void			instruc_core_lld(t_pc *pc);
 void			instruc_core_lfork(t_pc *pc);
 
 #endif

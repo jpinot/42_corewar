@@ -6,7 +6,7 @@
 /*   By: jpinyot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 14:14:30 by jpinyot           #+#    #+#             */
-/*   Updated: 2018/10/05 17:40:43 by jpinyot          ###   ########.fr       */
+/*   Updated: 2018/10/06 14:09:52 by jpinyot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int				ft_invalidargv(int sel, char *s);
 void			ft_error_getname(int n_line, int sel);
 void			ft_error_order(int l, int sel, char *s, char *ex);
 void			ft_error_par(int l, int sel, char *s, char *ex);
-void			ft_error_label(int l, int sel, char *s);
+void			ft_error_label(int sel, char *s);
 void			ft_check_for_coments(char *l, int i, int n_line);
 void			ft_error_getorders(int l, int sel);
 void			ft_puterr(char *s);
