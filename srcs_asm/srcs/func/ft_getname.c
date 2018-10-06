@@ -48,7 +48,6 @@ static t_header	ft_header_name(char *l, int n_l, int i, t_header h)
 {
 	char	*tmp;
 	int		j;
-	int		end;
 
 	tmp = l;
 	if (h.flag_n == 0)
@@ -69,7 +68,6 @@ static t_header	ft_header_comment(char *l, int n_l, int i, t_header h)
 {
 	char	*tmp;
 	int		j;
-	int		end;
 
 	tmp = l;
 	if (h.flag_c == 0)

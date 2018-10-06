@@ -12,8 +12,10 @@
 
 #include "libasm.h"
 
-static t_header	initial_header(t_header h)
+static t_header	initial_header(void)
 {
+	t_header	h;
+
 	h.prog_name = NULL;
 	h.comment = NULL;
 	h.flag_n = 0;
@@ -32,20 +34,20 @@ static t_header	name_and_comment(int fd)
 
 	j = 0;
 	i = 0;
-	h = initial_header(h);
+	h = initial_header();
 	while ((i = get_next_line(fd, &line) > 0) > 0)
 	{
 		j++;
 		h = ft_getname(line, j, h);
+		if (h.name_size > PROG_NAME_LENGTH)
+			ft_error_getname(j, 2);
+		if (h.comment_size > COMMENT_LENGTH)
+			ft_error_getname(j, -2);
 		if (h.flag_n == 2 && h.flag_c == 2)
 			break ;
 	}
 	if (i < 1)
 		ft_error_getname(j, 0);
-	if (h.name_size > PROG_NAME_LENGTH)
-		ft_error_getname(j, 2);
-	if (h.comment_size > COMMENT_LENGTH)
-		ft_error_getname(j, -2);
 	h.line_n = j;
 	return (h);
 }

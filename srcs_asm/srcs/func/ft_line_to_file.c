@@ -12,7 +12,7 @@
 
 #include "libasm.h"
 
-static void	label_to_line(t_line *line, t_label **label, int fd)
+static void	label_to_line(t_line *line, int fd)
 {
 	int i;
 
@@ -39,7 +39,7 @@ void		ft_line_to_file(t_line *bgn, t_label **label, int fd)
 			write(fd, &(line->order_n), 1);
 			if (line->ocp != 1)
 				write(fd, &(line->ocp), 1);
-			label_to_line(line, label, fd);
+			label_to_line(line, fd);
 		}
 		line = line->next;
 	}

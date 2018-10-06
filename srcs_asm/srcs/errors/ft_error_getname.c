@@ -67,7 +67,6 @@ static void	bigger_length(int l, int sel)
 
 void		ft_error_getname(int l, int sel)
 {
-	l++;
 	if (sel == 0)
 		none_name_comm(l);
 	else if (sel > 0)

@@ -12,7 +12,7 @@
 
 NAME = asm
 
-FLAG = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = srcs/
 
